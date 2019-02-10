@@ -9,9 +9,8 @@
 							  username VARCHAR(50) NOT NULL UNIQUE, 							  password VARCHAR(50) NOT NULL, 							  display_name VARCHAR(50)NOT NULL);\
 \
 CREATE TABLE public.vacation ( id SERIAL NOT NULL PRIMARY KEY, \
-								  name VARCHAR(50) NOT NULL UNIQUE, 								  description VARCHAR(300) NOT NULL, 								  user_id INT NOT NULL REFERENCES public.user(id));\
+								  destination VARCHAR(50) NOT NULL UNIQUE, 								  description VARCHAR(300) NOT NULL, 								  vacation_goer_id INT NOT NULL REFERENCES public.user(id));\
 \
-CREATE TABLE public.vacation_vote (id SERIAL NOT NULL PRIMARY KEY,\
-									   date_posted DATE NOT NULL DEFAULT CURRENT_DATE,\
-									   user_id INT NOT NULL REFERENCES public.user(id), \
+CREATE TABLE public.vacation_vote (id SERIAL NOT NULL PRIMARY,\
+									   vacation_goer_id INT NOT NULL REFERENCES public.user(id), \
 									   vacation_id INT NOT NULL REFERENCES public.vacation(id));}

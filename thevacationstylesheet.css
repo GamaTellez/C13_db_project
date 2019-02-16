@@ -8,9 +8,10 @@
 }
 
 #contentdiv {
-    margin-top: 100px;
+    margin-top: 25px;
     width: 100%;
     display: inline-block;
+    height: 300px;
 }
 
 #vacationstable {
@@ -19,6 +20,19 @@
 	max-width: 1000px;
     float: none;   
     border-spacing: 10px;
+}
+
+#cellTable {
+    text-align: center;
+    height: 50px;
+}
+
+#cell_vote {
+    text-align: center;
+}
+
+#up_vote_button {
+    
 }
 
 #authornamecolumn {
@@ -43,14 +57,14 @@
 }
 
 #votescolumn {
-    width: 600px;
+    width: 100px;
     border-radius: 25px;
     border: 2px solid black;
     padding: 20px; 
 }
 
 #detailscolumn {
-    width: 500px;
+    width: 600px;
     border-radius: 25px;
     border: 2px solid black;
     padding: 20px; 
@@ -58,4 +72,19 @@
 
 th {
     height: 20px;
+}
+
+#table_options_div {
+    margin-top: 150px;
+    text-align: center;
+}
+
+#filter_image {
+    height: 20px;
+    width: 20px;   
+}
+
+#sort_image {
+    height: 20px;
+    width: 20px;   
 }

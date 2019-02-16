@@ -14,36 +14,37 @@
 
     function set_db_connection() {
         static $db;
-        try {
-            $user = 'root';
-            $pass = '';    
-            $db = 'vacation_app_test_db';
-            $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");   
+        // try {
+        //     $user = 'root';
+        //     $pass = '';    
+        //     $db = 'vacation_app_test_db';
+        //     $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");   
+        //     return $db;
+        // } catch (PDOException $ex) {
+        //     echo 'Error!: ' . $ex->getMessage();
+        //     die();
+        // }
+        try
+        {
+            $dbUrl = getenv('DATABASE_URL');
+ 
+            $dbOpts = parse_url($dbUrl);
+ 
+            $dbHost = $dbOpts["host"];
+            $dbPort = $dbOpts["port"];
+            $dbUser = $dbOpts["user"];
+            $dbPassword = $dbOpts["pass"];
+            $dbName = ltrim($dbOpts["path"],'/');
+ 
+            $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $db;
-        } catch (PDOException $ex) {
+        }
+        catch (PDOException $ex)
+        {
             echo 'Error!: ' . $ex->getMessage();
             die();
         }
-                     // try
-                     // {
-                     //     $dbUrl = getenv('DATABASE_URL');
- 
-                     //     $dbOpts = parse_url($dbUrl);
- 
-                     //     $dbHost = $dbOpts["host"];
-                     //     $dbPort = $dbOpts["port"];
-                     //     $dbUser = $dbOpts["user"];
-                     //     $dbPassword = $dbOpts["pass"];
-                     //     $dbName = ltrim($dbOpts["path"],'/');
- 
-                     //     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-                     //     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                     // }
-                     // catch (PDOException $ex)
-                     // {
-                     //     echo 'Error!: ' . $ex->getMessage();
-                     //     die();
-                     // }
     }
     
 if (isset($_POST['login'])) {

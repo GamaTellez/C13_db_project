@@ -22,23 +22,19 @@
 
     <body onload="load_current_vacations_to_table()"> 
         <div id="table_options_div">
+        
             <img src="images/ilter.png" id="filter_image">
             <select id="filter_by_user_select">
                 <option value="start">Select user</option>
-            <?php
-            $all_goers = $_SESSION["vacation_goers_array"];
-            for ($i = 0; $i < count($all_goers); $i++) {
-                $vacation_goer_at_index = $all_goers[$i];
-                echo '<option value="' . $i . '">' . $vacation_goer_at_index->getDisplayName() . '</td>';
-            }
-            ?>
             </select id="sort_by_select">
+            
             <img src="images/sort.png" id="sort_image">
             <select>
                 <option>Select field</option>
                 <option value="0">Date</option>
                 <option value="1">Total votes</option>
             </select>
+        
         </div>
 
         <div id="contentdiv">
